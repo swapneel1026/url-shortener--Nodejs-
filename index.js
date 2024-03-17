@@ -6,7 +6,7 @@ const PORT = 7000;
 
 dbconnection("mongodb://localhost:27017/urls");
 app.use(express.json());
-app.use("/url", urlRoute);
+app.use("/urlshortener", urlRoute);
 app.listen(PORT, () => {
   console.log("Server is listening at port " + PORT);
 });

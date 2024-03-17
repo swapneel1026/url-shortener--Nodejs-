@@ -28,3 +28,10 @@ export async function handleRedirect(req, res) {
   );
   res.redirect(entry.redirectURL);
 }
+export async function handleGetAnalytics(req, res) {
+  const shortId = req.params.shortId;
+  const result = await URL.findOne({ shortId });
+  return res
+    .status(200)
+    .json({ timesClicked: result.visitHistory.length, analytics: result });
+}
