@@ -3,7 +3,6 @@ import URL from "../models/url.model.js";
 
 export async function handleGenerateShortUrl(req, res) {
   const body = req.body;
-  console.log(body);
   if (!body.url)
     return res.status(400).json({ error: "Please provide the redirect url!" });
   const shortId = nanoid(6);
@@ -11,6 +10,7 @@ export async function handleGenerateShortUrl(req, res) {
     shortId: shortId,
     redirectURL: body.url,
     visitHistory: [],
+    createdBy: req.user.id,
   });
   return res.render("home", { id: shortId });
 }
